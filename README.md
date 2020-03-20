@@ -1,9 +1,8 @@
-# APP
-- O fluxo de trabalho básico Git é algo assim:
-  - Você modifica arquivos no seu diretório de trabalho.
-  - Você prepara os arquivos, adicionando imagens deles à sua área de preparo com git add.
-  - Você faz commit, o que leva os arquivos como eles estão na área de preparo com git commit.
-  - Você armazena essa imagens de forma permanente para o diretório do Git com git push.
+# O APP
+![Image of Yaktocat](https://github.com/peedrinhoph/app_desenhos_unicasa/blob/master/Anota%C3%A7%C3%A3o%202020-03-20%20173847.png)
+![Image of Yaktocat](https://github.com/peedrinhoph/app_desenhos_unicasa/blob/master/Anota%C3%A7%C3%A3o%202020-03-20%20173914.png)
+![Image of Yaktocat](https://github.com/peedrinhoph/app_desenhos_unicasa/blob/master/Anota%C3%A7%C3%A3o%202020-03-20%20173943.png)
+![Image of Yaktocat](https://github.com/peedrinhoph/app_desenhos_unicasa/blob/master/Anota%C3%A7%C3%A3o%202020-03-20%20174004.png)
 
 # Objetivos
 
