@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "505922380049",
+    "firebase_url": "https://unicamobile-71cb6.firebaseio.com",
+    "project_id": "unicamobile-71cb6",
+    "storage_bucket": "unicamobile-71cb6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505922380049:android:ed2d5858f25feb964f2cb0",
+        "android_client_info": {
+          "package_name": "com.unica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505922380049-se1b1ck5j59udf4om97lksmu8lh1lrnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfRfafEmjAS6XFHYPFxDGYngxdlZQ1OrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505922380049-se1b1ck5j59udf4om97lksmu8lh1lrnc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
