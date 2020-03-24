@@ -10,11 +10,14 @@
 
 - [x] Criar o layout do app
 - [x] Identificar as ferramentas necessárias para o funcionamento
-- [x] Ler código de barras
-- [x] Conectar com a API
-- [x] Listar
-- [x] Conexão via FTP
-- [x] Download do arquivo
+  - [x] React Native Camera (Leitura de Código de Barras)
+  - [x] React Native FTP (Downlod do arquivo)
+- [x] Utilização da ML KIT do Firebase (Code Bar)
+- [x] Conexão com a API
+- [x] Listar dos Resultados
+- [x] Conexão com o FTP
+- [x] Download do PDF
+- [ ] Visualização do PDF com Web View
 
 ```
 Mastering Markdown
