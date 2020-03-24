@@ -31,6 +31,11 @@ export default function DrawerRoutes({ navigation, route }) {
 
     return (
         <Drawer.Navigator
+            hideStatusBar={false}
+            statusBarAnimation="fade"
+            drawerType="slide"
+            //overlayColor="transparent"
+            sceneContainerStyle={{flex:1}}
             drawerContentOptions={{
                 activeTintColor: '#FFF',
                 activeBackgroundColor: '#27ae60',
@@ -38,6 +43,11 @@ export default function DrawerRoutes({ navigation, route }) {
                     fontWeight: 'bold',
                     fontSize: 15
                 },
+                itemStyle: { marginVertical: 5 },
+            }}
+            drawerStyle={{
+                backgroundColor: '#FFF',
+                width: "70%",
             }}
         >
             <Drawer.Screen
