@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { FlatList, Modal, StyleSheet, Alert, Text, TextInput, View, Dimensions, Image, TouchableOpacity } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
@@ -66,6 +66,7 @@ export default function Main({ navigation }) {
             }
         )
     }
+
     const renderCameraModalVertical = () => (
         <Modal
             visible={cameraModalOpened}
@@ -171,6 +172,11 @@ export default function Main({ navigation }) {
         </Modal>
     )
 
+    const input = useRef(null);
+    const getFocusInput = () => {
+        input.current.focus();
+    }
+    
     async function getCard() {
         if (!num_ordem) {
             Alert.alert(
@@ -182,7 +188,8 @@ export default function Main({ navigation }) {
                         onPress: () => setCameraModalOpened(true)
                     },
                     {
-                        text: 'Digitar'
+                        text: 'Digitar',
+                        onPress: () => getFocusInput()
                     },
                 ],
                 { cancelable: false },
@@ -246,6 +253,7 @@ export default function Main({ navigation }) {
                     value={num_ordem}
                     onChangeText={text => setNum_ordem(text)}
                     autoFocus={true}
+                    ref={input}
                 />
                 <TouchableOpacity
                     onPress={() => { getCard() }}

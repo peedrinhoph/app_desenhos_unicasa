@@ -32,7 +32,7 @@ export default function DrawerRoutes({ navigation, route }) {
     return (
         <Drawer.Navigator
             hideStatusBar={false}
-            statusBarAnimation="fade"
+            //statusBarAnimation="fade"
             drawerType="slide"
             //overlayColor="transparent"
             sceneContainerStyle={{flex:1}}

@@ -3,7 +3,7 @@ import { Button, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 //import { createDrawerNavigator } from '@react-navigation/drawer';
-//import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 //import Main from './pages/Main';
 import Code from './pages/BarcodeScan';
@@ -80,7 +80,7 @@ const Routes = () => {
                 headerMode="none"
                 initialRouteName="Home"
                 screenOptions={{
-                    gestureEnabled: true, // Determina se pode voltar a tela arrastando para o lado
+                    gestureEnabled: false, // Determina se pode voltar a tela arrastando para o lado
                     gestureDirection: 'horizontal',
                     headerTintColor: '#FFF',
                     headerStyle: {
@@ -90,7 +90,7 @@ const Routes = () => {
                         fontWeight: 'bold',
                     },
                 }}
-                animation="fade"
+                //animation="fade"
             >
                 <Stack.Screen
                     name="Home"
@@ -104,7 +104,11 @@ const Routes = () => {
                         },
                         //headerRight: props => <LogoTitle {...props} />,
                         /*headerRight: () => (
-                            <Button onPress={() => setCount(c => c + 1)} title="Update count" />
+                            <Icon name="menu"
+                                size={25}
+                                color="#fff"
+                                onPress={() => openDrawer()}>
+                            </Icon>
                         ),*/
                     }}
                 />
