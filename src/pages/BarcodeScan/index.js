@@ -3,7 +3,6 @@ import { StyleSheet, Alert, Text, TextInput, View, Dimensions, Button, Image, To
 
 import BarcodeScan from '../../components/BarcodeScan';
 import BarcodeScan1 from '../../components/BarcodeScanOne';
-import BarcodeScan2 from '../../components/ModalScan';
 
 function Scan() {
     return <>

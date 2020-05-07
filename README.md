@@ -8,16 +8,16 @@
 
 # Objetivos
 
-- [x] Criar o layout do app
+- [x] Layout do app
 - [x] Identificar as ferramentas necessárias para o funcionamento
   - [x] React Native Camera (Leitura de Código de Barras)
   - [x] React Native FTP (Downlod do arquivo)
 - [x] Utilização da ML KIT do Firebase (Code Bar)
 - [x] Conexão com a API
-- [x] Listar dos Resultados
+- [x] Listar os Resultados
 - [x] Conexão com o FTP
-- [x] Download do PDF
-- [ ] Visualização do PDF com Web View
+- [x] Download do PDF via FTP para o storage do aparelho
+- [ ] Visualização do PDF dentro do App
 
 ```
 Mastering Markdown

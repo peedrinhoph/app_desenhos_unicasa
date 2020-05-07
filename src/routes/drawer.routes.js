@@ -21,7 +21,7 @@ function getHeaderTitle(route) {
         case "Home": return "Inicio";
         case "TypeDrawer": return "Meu Código";
         case "TestCad": return "Cadastro";
-        case "WebView": return "Web View";
+        case "WebView": return "Linkedin";
     }
 }
 
@@ -41,9 +41,9 @@ export default function DrawerRoutes({ navigation, route }) {
                 activeBackgroundColor: '#27ae60',
                 labelStyle: {
                     fontWeight: 'bold',
-                    fontSize: 15
+                    fontSize: 15,
                 },
-                itemStyle: { marginVertical: 5 },
+                itemStyle: { marginVertical: 5, marginHorizontal: 5 },
             }}
             drawerStyle={{
                 backgroundColor: '#FFF',
@@ -54,7 +54,7 @@ export default function DrawerRoutes({ navigation, route }) {
                 options={{
                     title: 'Inicio',
                     //drawerLabel: 'Home'
-                    drawerIcon: () => (<Icon style={[{ color: '#445' }]} size={20} name={'home'} />)
+                    drawerIcon: () => (<Icon style={[{ color: '#445' }]} size={25} name={'home'} />)
                 }}
                 name="Home"
                 component={Main}
@@ -62,23 +62,23 @@ export default function DrawerRoutes({ navigation, route }) {
             <Drawer.Screen
                 options={{
                     title: 'Meu Código',
-                    drawerIcon: () => (<Icon style={[{ color: '#445' }]} size={20} name={'barcode'} />)
+                    drawerIcon: () => (<Icon style={[{ color: '#445' }]} size={25} name={'barcode'} />)
                 }}
                 name="TypeDrawer"
                 component={CodeType}
             />
             <Drawer.Screen
                 options={{
-                    title: 'Cadastro Teste',
-                    drawerIcon: () => (<Icon style={[{ color: '#445' }]} size={20} name={'free-code-camp'} />)
+                    title: 'Teste',
+                    drawerIcon: () => (<Icon style={[{ color: '#445' }]} size={25} name={'free-code-camp'} />)
                 }}
                 name="TestCad"
                 component={TestCad}
             />
             <Drawer.Screen
                 options={{
-                    title: 'Web View',
-                    drawerIcon: () => (<Icon style={[{ color: '#445' }]} size={20} name={'chrome'} />)
+                    title: 'Linkedin',
+                    drawerIcon: () => (<Icon style={[{ color: '#445' }]} size={25} name={'linkedin'} />)
                 }}
                 name="WebView"
                 component={WebView}
@@ -86,7 +86,7 @@ export default function DrawerRoutes({ navigation, route }) {
             <Drawer.Screen
                 options={{
                     title: 'Sair',
-                    drawerIcon: () => (<Icon style={[{ color: '#445' }]} size={20} name={'sign-out'} />),
+                    drawerIcon: () => (<Icon style={[{ color: '#445' }]} size={25} name={'sign-out'} />),
 
                 }}
                 name="Sair"

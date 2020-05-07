@@ -1,0 +1,4 @@
+export const BASE_API_URL = 'http://localhost:3333';
+export const BASE_FTP_URL = 'IP OR FTP HOST';
+export const BASE_FTP_LOGIN = 'LOGIN';
+export const BASE_FTP_PASSWORD = 'PASSWORD';

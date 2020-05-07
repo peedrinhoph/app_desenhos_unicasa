@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { FlatList, Modal, StyleSheet, Alert, Text, TextInput, View, Dimensions, Image, TouchableOpacity } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FTP from 'react-native-ftp';
-
+import { BASE_FTP_URL, BASE_FTP_LOGIN, BASE_FTP_PASSWORD } from '../../Config/config';
 import api from '../../services/api';
 
 import {
@@ -21,7 +21,8 @@ import {
 
 export default function Main({ navigation }) {
     const [num_ordem, setNum_ordem] = useState('');
-    const [cameraModalOpened, setCameraModalOpened] = useState(false);
+    const [cameraModalOpenedHorizontal, setCameraModalHorizontalOpened] = useState(false);
+    const [cameraModalOpenedVertical, setCameraModalVerticalOpened] = useState(false);
     const [flashOn, setFlashOn] = useState(false)
     const [link, setLink] = useState([]);
 
@@ -29,7 +30,8 @@ export default function Main({ navigation }) {
         try {
             console.log(e.type + " Barras: " + e.data);
             setNum_ordem(e.data);
-            setCameraModalOpened(false);
+            setCameraModalHorizontalOpened(false);
+            setCameraModalVerticalOpened(false);
         } catch (err) {
             console.log(err);
         }
@@ -45,8 +47,8 @@ export default function Main({ navigation }) {
 
     const onButtonpress = (desenho_link) => {
         console.log(desenho_link);
-        FTP.setup("172.16.1.123", 21)
-        FTP.login("desenhos", "@$desenhos").then(
+        FTP.setup(BASE_FTP_URL, 21)
+        FTP.login(BASE_FTP_LOGIN, BASE_FTP_PASSWORD).then(
             (result) => {
                 FTP.downloadFile(`${desenho_link}`, "/storage/emulated/0/Download")
                     .then((result) => {
@@ -67,9 +69,9 @@ export default function Main({ navigation }) {
         )
     }
 
-    const renderCameraModalVertical = () => (
+    const renderCameraModalHorizontal = () => (
         <Modal
-            visible={cameraModalOpened}
+            visible={cameraModalOpenedHorizontal}
             transparent={true}
             animationType="slide"
         >
@@ -118,16 +120,16 @@ export default function Main({ navigation }) {
                     alignSelf: 'flex-end',
                     position: 'absolute',
                 }}>
-                    <TouchableOpacity onPress={() => setCameraModalOpened(false)}>
+                    <TouchableOpacity onPress={() => setCameraModalHorizontalOpened(false)}>
                         <IconMaterial name="close" size={40} color="#FFF" />
                     </TouchableOpacity>
                 </View>
             </ModalContainer>
         </Modal>
     )
-    const renderCameraModal = () => (
+    const renderCameraModalVertical = () => (
         <Modal
-            visible={cameraModalOpened}
+            visible={cameraModalOpenedVertical}
             transparent={false}
             animationType="slide"
         >
@@ -157,13 +159,13 @@ export default function Main({ navigation }) {
                 <View style={styles.overlayTop} />
                 <View style={styles.flasherBottom}>
                     <TouchableOpacity onPress={() => handleTourch(flashOn)}>
-                        <Image style={styles.flasherIcon}
-                            source={flashOn === true ? require('../../images/flasher_on.png') : require('../../images/flasher_off.png')} />
+                        {/*<Image style={styles.flasherIcon} source={flashOn === true ? require('../../images/flasher_on.png') : require('../../images/flasher_off.png')} />*/}
+                        <IconMaterial name={flashOn === true ? "flash-on" : "flash-off"} size={40} color="#FFF" />
                     </TouchableOpacity>
                 </View>
                 <View style={styles.overlayBottom} />
                 <ModalButtons>
-                    <CameraButtonContainer onPress={() => setCameraModalOpened(false)}>
+                    <CameraButtonContainer onPress={() => setCameraModalVerticalOpened(false)}>
                         <CancelButtonText>Cancelar Leitura</CancelButtonText>
                     </CameraButtonContainer>
                 </ModalButtons>
@@ -176,7 +178,7 @@ export default function Main({ navigation }) {
     const getFocusInput = () => {
         input.current.focus();
     }
-    
+
     async function getCard() {
         if (!num_ordem) {
             Alert.alert(
@@ -185,7 +187,7 @@ export default function Main({ navigation }) {
                 [
                     {
                         text: 'Ler Agora',
-                        onPress: () => setCameraModalOpened(true)
+                        onPress: () => setCameraModalHorizontalOpened(true)
                     },
                     {
                         text: 'Digitar',
@@ -210,6 +212,7 @@ export default function Main({ navigation }) {
             //Alert.alert("SUCCESS", 'COD ITEM:' + ITEM + ' MASCARA:' + MASC + ' LOCAL:' + LINK);
         }
     };
+
     const FlatListItemSeparator = () => <View style={{
         height: 0.5,
         width: "100%",
@@ -231,7 +234,6 @@ export default function Main({ navigation }) {
         <View style={styles.listItem}>
             <TouchableOpacity
                 onPress={() => onButtonpress(item['LINK'])}
-            //onPress={() => navigation.navigate('Webview', { desenho_link: item['LINK'] })}
             >
                 <Text style={styles.item}>{item['ITEM']}</Text>
                 <Text style={styles.masc}>{item['MASC']}</Text>
@@ -257,20 +259,37 @@ export default function Main({ navigation }) {
                 />
                 <TouchableOpacity
                     onPress={() => { getCard() }}
-                    //onPress={() => { onButtonpress() }}
                     style={styles.button}>
                     <Icon name="search" size={20} color="#FFF" />
                 </TouchableOpacity>
             </View>
             {renderCameraModalVertical()}
+            {renderCameraModalHorizontal()}
             {renderList()}
-            <TakePictureButtonContainer onPress={() => { setCameraModalOpened(true); }}>
+            <View style={{ flex: 1, flexDirection: 'row', maxHeight: 100, height: 100 }}>
+                <View style={{ flex: 1 }}>
+                    <TakePictureButtonContainer onPress={() => { setCameraModalVerticalOpened(true); }} style={{ right: 10 }}>
+                        <TakePictureButtonLabel>
+                            <Icon name="camera" size={25} color="#000" />
+                            <Text style={{ fontSize: 9, color: '#333' }}>Vertical</Text>
+                        </TakePictureButtonLabel>
+                    </TakePictureButtonContainer>
+                </View>
+                <View style={{ flex: 1 }}>
+                    <TakePictureButtonContainer onPress={() => { setCameraModalHorizontalOpened(true); }} style={{ left: 10 }}>
+                        <TakePictureButtonLabel>
+                            <Icon name="camera" size={25} color="#000" style={{ transform: [{ rotate: "90deg" }] }} />
+                            <Text style={{ fontSize: 9, color: '#333' }}>Horizontal</Text>
+                        </TakePictureButtonLabel>
+                    </TakePictureButtonContainer>
+                </View>
+            </View>
+            {/*<TakePictureButtonContainer onPress={() => { setCameraModalOpened(true); }}>
                 <TakePictureButtonLabel>
                     <Icon name="camera" size={30} color="#000" />
                 </TakePictureButtonLabel>
-            </TakePictureButtonContainer>
+            </TakePictureButtonContainer>*/}
         </View>
-
     </>
 }
 

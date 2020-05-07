@@ -90,7 +90,6 @@ const Routes = () => {
                         fontWeight: 'bold',
                     },
                 }}
-                //animation="fade"
             >
                 <Stack.Screen
                     name="Home"
