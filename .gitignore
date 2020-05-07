@@ -62,4 +62,4 @@ buck-out/
 /src/Config/config.js
 
 # Unica\android\app\google-services.json
-\android\app\google-services.json
+/Android/app/google-services.json
